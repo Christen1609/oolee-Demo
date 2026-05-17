@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #ffffff;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes oolee-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-mask {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 80px,
+    #000 calc(100% - 80px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 80px,
+    #000 calc(100% - 80px),
+    transparent 100%
+  );
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: oolee-marquee 35s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes oolee-signup-pulse {
+  0%, 100% {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 0 rgba(236, 0, 140, 0);
+  }
+  50% {
+    background-color: #FFE4F2;
+    box-shadow: 0 0 22px 4px rgba(236, 0, 140, 0.35),
+      0 0 6px 1px rgba(236, 0, 140, 0.25);
+  }
+}
+
+@layer components {
+  .btn-pink {
+    @apply inline-flex items-center justify-center rounded-pill bg-oolee-pink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-oolee-pink-hover;
+  }
+  .btn-pink-outline {
+    @apply inline-flex items-center justify-center rounded-pill border border-oolee-pink bg-white px-5 py-2.5 text-sm font-semibold text-oolee-pink transition-colors hover:bg-oolee-pink-light;
+  }
+  .btn-pink-outline-glow {
+    @apply btn-pink-outline;
+    animation: oolee-signup-pulse 2.4s ease-in-out infinite;
+  }
+  .btn-white-outline {
+    @apply inline-flex items-center justify-center rounded-pill border border-oolee-line bg-white px-5 py-2.5 text-sm font-semibold text-oolee-ink transition-colors hover:bg-oolee-bg-alt;
+  }
+  .pill-badge {
+    @apply inline-flex items-center gap-2 rounded-pill bg-oolee-blue-soft px-3 py-1 text-xs font-medium text-oolee-blue;
+  }
+  .pill-badge::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-oolee-blue;
+  }
+  .category-pill {
+    @apply inline-flex items-center rounded-pill border border-oolee-line bg-white px-4 py-1.5 text-xs font-medium text-oolee-ink transition-colors hover:bg-oolee-bg-alt cursor-pointer;
+  }
+  .category-pill-active {
+    @apply border-oolee-pink bg-oolee-pink-soft text-oolee-pink;
+  }
+  .dark-feature-card {
+    @apply rounded-2xl bg-gradient-to-br from-oolee-dark-2 to-oolee-dark p-5 text-white;
+  }
+  .accordion-row {
+    @apply rounded-xl border border-oolee-line bg-white px-4 py-3 text-sm font-medium text-oolee-ink;
+  }
+}
